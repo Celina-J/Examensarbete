@@ -1,0 +1,22 @@
+{
+  "name": "provianten",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "mysql": "^2.18.1",
+    "next": "13.0.2",
+    "next-auth": "^4.16.4",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
+  },
+  "devDependencies": {
+    "eslint": "8.27.0",
+    "eslint-config-next": "13.0.2"
+  }
+}
