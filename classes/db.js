@@ -17,7 +17,7 @@ export default class DB{
             this.con.query(sql, values, function (error, result){
                 if(error) reject({success: false, data: [], message: error});
 
-                resolve({success: true, data: result, message: ''});
+                resolve({success: true, data: JSON.parse(JSON.stringify(result)), message: ''});
             })
         })
     }

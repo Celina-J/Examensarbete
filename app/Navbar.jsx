@@ -2,24 +2,27 @@
 
 import { useEffect } from "react";
 import ErrorEmitter from "../classes/errorEmitter";
+import Login from './Login.jsx';
+
 
 function Navbar({data}) {
 
     const errorEmitter = new ErrorEmitter();
+   
 
     useEffect(()=>{
         if(!data.success){
-            errorEmitter.send(data.message.sqlMessage);
+            errorEmitter.send('Could not get navbar categories');
         }
     }, []);
  
 
     return (
         <nav>
-            <button onClick={() => errorEmitter.send('Testar hur det ser ut när jag skriver ett error meddelande', 'success')}>Emit message</button>
-            {data.data.map(cat => {
-                return <li key={cat.id}>{cat.name}</li>
-            })}
+            {/* {data.data.map(cat => {
+                return <span key={cat.id}>{cat.name}</span>
+            })}  */}
+            <Login />
         </nav>
     );
 }

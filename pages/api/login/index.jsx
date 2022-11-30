@@ -1,4 +1,4 @@
-import DB from "../../classes/db";
+import DB from "../../../classes/db";
 import bcrypt from 'bcrypt';
 
 
@@ -16,7 +16,7 @@ export default function handler(req, res) {
 
     db.query('SELECT id FROM `accounts` WHERE `email`=? AND `password`=? AND `active`=1', [body.email, hashedPWD])
         .then(user => {
-            
+
             if (user.data.length === 1) {
                 db.query('CALL get_account(?)', [user.data[0].id]).then(account => {
                     userObj.userData = account.data[0][0];
@@ -24,7 +24,7 @@ export default function handler(req, res) {
                     userObj.userData.roles = account.data[0][0].roles?.split(',') || [];
                     return res.status(200).json(userObj);
                 }).catch((err) => res.status(500).json(userObj));
-            }else {
+            } else {
                 return res.status(401).json(userObj);
             }
         })
